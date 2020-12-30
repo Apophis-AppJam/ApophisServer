@@ -5,10 +5,22 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
+const {
+  sequelize
+} = require('./models');
 
+/** alter: true를 해줘야 데이터베이스에 수정이 반영됨 */
+sequelize.sync({
+    alter: false
+  })
+  .then(() => {
+    console.log('데이터베이스 연결 성공.');
+  })
+  .catch((error) => {
+    console.error(error);
+  })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -20,7 +32,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
