@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Choice', {
 
-        list: {
+        replyString: {
             type: DataTypes.STRING(100),
             unique: false,
             allowNull: false,
