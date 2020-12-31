@@ -3,6 +3,7 @@ const router = express.Router();
 
 const chatController = require('../../controller/chatController')
 
-router.get('/a',chatController.readChats);
+router.get('/', chatController.readChat);
+
 
 module.exports = router;

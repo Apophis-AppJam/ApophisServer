@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         replyImage: {
             type: DataTypes.STRING(200),
             unique: false,
-            allowNull: false,
+            allowNull: true,
         },
         
     }, {
