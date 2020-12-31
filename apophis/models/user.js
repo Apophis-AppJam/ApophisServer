@@ -1,10 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
 
-        userID: {
-            type: DataTypes.STRING(20),
-            unique: false,
+        UserIdx: {
+            type: DataTypes.INTEGER,
             allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
         },
         userName: {
             type: DataTypes.STRING(10),
@@ -23,8 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     }, {
-        //모델의 옵션들을 지정하는곳    
-        freezeTableName: true,
+        //모델의 옵션들을 지정하는곳   
+        tableName: 'USER_TB',
         timestamps: false,
+
     });
 };

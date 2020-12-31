@@ -6,9 +6,9 @@ module.exports = {
         try {
             const aponymousChat = await Chat.findAll({
                 where : {
-                    id: 1,
+                    ChatIdx: 1,
                 },
-                attributes: ['id', 'text', 'chatAction', 'chatView', 'day', 'createdAt'],
+                attributes: ['ChatIdx', 'text', 'chatAction', 'chatView'],
             });
             return aponymousChat;
         } catch (error) {
