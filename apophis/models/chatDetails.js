@@ -1,29 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('Chat', {
-        ChatIdx: {
+    return sequelize.define('ChatDetails', {
+        ChatDetailsIdx: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             autoIncrement: true,
             primaryKey: true,
         },
-        text: {
-            type: DataTypes.STRING(200),
-            unique: false,
+        info: {
+            type: DataTypes.STRING(100),
             allowNull: true,
         },
         chatAction: {
             type: DataTypes.INTEGER,
-            unique: false,
             allowNull: true,
+            unique: true,
         },
         chatView: {
-            type: DataTypes.STRING(100),
-            unique: false,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
+        day: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        }
         
     }, {
-        //모델의 옵션들을 지정하는곳    
-        tableName: 'CHAT_TB',
+        //모델의 옵션들을 지정하는곳  
+        tableName:'CHAT_DETAILS_TB',
         timestamps: false,
 
     });
