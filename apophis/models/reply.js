@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         replyImage: {
             type: DataTypes.STRING(100),
             unique: false,
-            allowNull: false,
+            allowNull: true,
         },
         replyWords: {
             type: DataTypes.STRING(100),
             unique: false,
-            allowNull: false,
+            allowNull: true,
         },
         
     }, {
