@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         day: {
             type: DataTypes.INTEGER,
             allowNull: true,
+        },
+        replyNum: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
         }
         
     }, {
