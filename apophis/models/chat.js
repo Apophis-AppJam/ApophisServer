@@ -10,16 +10,6 @@ module.exports = (sequelize, DataTypes) => {
             unique: false,
             allowNull: true,
         },
-        chatAction: {
-            type: DataTypes.INTEGER,
-            unique: false,
-            allowNull: true,
-        },
-        chatView: {
-            type: DataTypes.STRING(100),
-            unique: false,
-            allowNull: true,
-        },
         
     }, {
         //모델의 옵션들을 지정하는곳    
