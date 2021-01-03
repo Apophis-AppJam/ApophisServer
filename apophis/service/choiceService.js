@@ -2,14 +2,14 @@ const { ChoiceWords, ChatDetails } = require('../models');
 
 module.exports = {
     
-    getChoice: async (day, chatActionId) => {
+    getChoice: async (chatActionId) => {
         try {
             const aponymousChat = await ChatDetails.findAll({
                 where : {
-                    day: day,
-                    chatAction : chatActionId
+                    ChatDetailsIdx : chatActionId
                 },
-                attributes: ['ChatDetailsIdx', 'info', 'chatAction', 'chatView', 'day'],
+                attributes: ['info', 'day', 'replyNum'],
+    
                 include: [{
                     model: ChoiceWords,
                     attributes: ['choiceWords']

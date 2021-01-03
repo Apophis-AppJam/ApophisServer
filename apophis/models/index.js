@@ -30,16 +30,16 @@ db.ChatDetails.hasMany(db.Chat,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',
 db.Chat.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatDetailsIdx'})
 
 /* 1: N ChatDetails:ChoiceWords */
-db.ChatDetails.hasMany(db.ChoiceWords,{onDelete:'cascade',foreignKey: 'chatAction',sourceKey:'chatAction'})
-db.ChoiceWords.belongsTo(db.ChatDetails,{foreignKey: 'chatAction',targetKey:'chatAction'})
+db.ChatDetails.hasMany(db.ChoiceWords,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',sourceKey:'ChatDetailsIdx'})
+db.ChoiceWords.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatDetailsIdx'})
 
 /* 1: N Reply:ReplyWords */
 db.Reply.hasMany(db.ReplyWords,{onDelete:'cascade',foreignKey: 'ReplyIdx',sourceKey:'ReplyIdx'})
 db.ReplyWords.belongsTo(db.Reply,{foreignKey: 'ReplyIdx',targetKey:'ReplyIdx'})
 
 /* 1: N ChatDetails:Reply */
-db.ChatDetails.hasMany(db.Reply,{onDelete:'cascade',foreignKey: 'chatAction',sourceKey:'chatAction'})
-db.Reply.belongsTo(db.ChatDetails,{foreignKey: 'chatAction',targetKey:'chatAction'})
+db.ChatDetails.hasMany(db.Reply,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',sourceKey:'ChatDetailsIdx'})
+db.Reply.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatDetailsIdx'})
 
 
 module.exports = db;
