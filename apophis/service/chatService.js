@@ -1,26 +1,14 @@
-const { Chat, ChatDetails } = require('../models');
+const { Chat } = require('../models');
 
 module.exports = {
     
-    getChatById: async (day, chatDetailsIdx) => {
-        
+    getChatById: async () => {
         try {
-            const plusReply = await ChatDetails.findOne({
-                where:{
-                    day: day,
-                    chatDetailsIdx: chatDetailsIdx,
-                },
-                attributes: ['replyNum','info','chatAction']
-            })
-            const chat = await Chat.findAll({
+            const aponymousChat = await Chat.findAll({
                 where : {
-                    chatDetailsIdx: chatDetailsIdx,
+                    ChatIdx: 1,
                 },
                 attributes: ['ChatIdx', 'text'],
-            });
-            const aponymousChat = ({
-                chat,
-                plusReply
             });
             return aponymousChat;
         } catch (error) {
@@ -28,17 +16,4 @@ module.exports = {
         }
     },
 
-    // getNewCreators: async () => {
-    //     try {
-    //         const creators = await Creator.findAll({
-    //             where: {
-    //                 ifNew: 1,
-    //             },
-    //             attributes: ['profileUrl'],
-    //         });
-    //         return creators;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // }
 }
