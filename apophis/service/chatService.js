@@ -8,7 +8,7 @@ module.exports = {
                 where : {
                     ChatIdx: 1,
                 },
-                attributes: ['ChatIdx', 'text', 'chatAction', 'chatView'],
+                attributes: ['ChatIdx', 'text'],
             });
             return aponymousChat;
         } catch (error) {
@@ -16,17 +16,4 @@ module.exports = {
         }
     },
 
-    // getNewCreators: async () => {
-    //     try {
-    //         const creators = await Creator.findAll({
-    //             where: {
-    //                 ifNew: 1,
-    //             },
-    //             attributes: ['profileUrl'],
-    //         });
-    //         return creators;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // }
 }
