@@ -3,6 +3,6 @@ const router = express.Router();
 
 const choiceController = require('../../controller/choiceController');
 
-router.get('/:day/:chatActionId', choiceController.readChat);
+router.get('/:chatActionId', choiceController.readChat);
 
 module.exports = router;
