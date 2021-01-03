@@ -7,7 +7,6 @@ const sc = require('../modules/statusCode');
 const choiceService = require('../service/choiceService')
 
 module.exports = {
-    
     /* 대화창 상세 조회  GET : [ /choice/:chatDetailsIdx] */
     readChat: async (req, res) => {
         const chatActionId = req.params.chatActionId;

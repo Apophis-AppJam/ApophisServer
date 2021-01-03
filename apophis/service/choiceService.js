@@ -9,6 +9,7 @@ module.exports = {
                     ChatDetailsIdx : chatActionId
                 },
                 attributes: ['info', 'day', 'replyNum'],
+    
                 include: [{
                     model: ChoiceWords,
                     attributes: ['choiceWords']
