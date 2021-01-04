@@ -3,7 +3,6 @@ const ut = require('../modules/util');
 const rm = require('../modules/responseMessage');
 const sc = require('../modules/statusCode');
 
-// 세화 블럭
 const choiceService = require('../service/choiceService')
 
 module.exports = {

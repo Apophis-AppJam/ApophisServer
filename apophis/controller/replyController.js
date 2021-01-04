@@ -12,10 +12,9 @@ const {
 module.exports = {
 
     getReply: async (req, res) => {
-        const chatAction = req.params.chatAction;
-
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const token = req.headers.jwt;
         const {
-            UserIdx,
             replyString,
 
         } = req.body;
@@ -25,60 +24,57 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    UserIdx: UserIdx,
+                    accessToken: token,
                 }
             });
 
             const reply = await Reply.create({
                 replyString,
+                chatDetailsIdx,
                 //replyImage,
-                chatAction,
             });
 
             await user.addReply(reply);
-            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_POST_SUCCESS, reply));
+            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_REPLY_SUCCESS));
         } catch (err) {
             console.log(err);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
         }
     },
     getImage: async (req, res) => {
-        const chatAction = req.params.chatAction;
-        const replyNum = req.params.replyNum;
-
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const token = req.headers.jwt;
         const replyImage = req.file.location
 
         const {
-            UserIdx,
             replyString,
-
         } = req.body;
 
         try {
             const user = await User.findOne({
                 where: {
-                    UserIdx: UserIdx,
+                    accessToken: token,
                 }
             });
 
             const reply = await Reply.create({
                 replyString,
                 replyImage,
-                chatAction,
+                chatDetailsIdx,
             });
 
             await user.addReply(reply);
-            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_POST_SUCCESS, reply));
+            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_IMAGE_SUCCESS));
         } catch (err) {
             console.log(err);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
         }
     },
+    
     getWords: async (req, res) => {
-        const chatAction = req.params.chatAction;
-
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const token = req.headers.jwt;
         const {
-            UserIdx,
             replyString,
             word1,
             word2,
@@ -88,13 +84,13 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    UserIdx: UserIdx,
+                    accessToken: token,
                 }
             });
 
             const reply = await Reply.create({
                 replyString,
-                chatAction,
+                chatDetailsIdx,
             })
 
             const words1 = await ReplyWords.create({
@@ -115,7 +111,7 @@ module.exports = {
             await reply.addReplyWords(words2);
             await reply.addReplyWords(words3);
 
-            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_POST_SUCCESS, reply));
+            return res.status(sc.OK).send(ut.success(sc.OK, rm.CREATE_WORDS_SUCCESS));
         } catch (err) {
             console.log(err);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
