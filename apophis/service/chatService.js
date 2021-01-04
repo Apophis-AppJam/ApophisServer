@@ -2,15 +2,15 @@ const { Chat,ChatDetails } = require('../models');
 
 module.exports = {
     
-    getChatById: async (day, chatDetailsIdx) => {
+    getChatById: async ( chatDetailsIdx) => {
         
         try {
-            const plusReply = await ChatDetails.findOne({
+            const postInfo = await ChatDetails.findOne({
                 where:{
-                    day: day,
+                    
                     chatDetailsIdx: chatDetailsIdx,
                 },
-                attributes: ['replyNum','info','chatAction']
+                attributes: ['info']
             })
             const chat = await Chat.findAll({
                 where : {
@@ -20,7 +20,7 @@ module.exports = {
             });
             const aponymousChat = ({
                 chat,
-                plusReply
+                postInfo
             });
             return aponymousChat;
         } catch (error) {
