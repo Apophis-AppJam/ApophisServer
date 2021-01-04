@@ -1,10 +1,11 @@
-const { Reply, ReplyWords, Chat, ChatDetails } = require('../models');
+const { Reply, ReplyWords, Chat, ChatDetails,User } = require('../models');
 
 module.exports = {
     
-    getChatById: async ( chatDetailsIdx) => {
+    getChatById: async ( chatDetailsIdx,token) => {
         
         try {
+            
             const postInfo = await ChatDetails.findOne({
                 where:{
                     
@@ -28,8 +29,15 @@ module.exports = {
         }
     },
 
-    getAllChat: async (day) => {
+    getAllChat: async (day,token) => {
         try {
+            const user = await User.findOne({
+            where: {
+                accessToken: token,
+            },
+            attributes: ['UserIdx']
+        });
+
             const aponymousChat = await ChatDetails.findAll({
                 where:{
                     day: day,
@@ -40,15 +48,13 @@ module.exports = {
                     attributes: ['text']
                 }]
             })
+
             const userReply = await Reply.findAll({
-                // where : {
-                //     chatDetailsIdx: chatDetailsIdx,
-                // },
+                where: {
+                    UserIdx: user.UserIdx,
+                },
                 attributes: ['ChatDetailsIdx', 'replyString', 'replyImage'],
-                include: [{
-                    model: ReplyWords,
-                    attributes: ['words']
-                }]
+                
             });
             const chatReply = ({
                 aponymousChat,
