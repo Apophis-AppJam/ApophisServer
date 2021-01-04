@@ -29,6 +29,10 @@ module.exports = {
     DELETE_USER_FAIL: "사용자 삭제 실패",
 
     /* Post */
+    CREATE_REPLY_SUCCESS: "답변 추가 완료",
+    CREATE_IMAGE_SUCCESS: "이미지 포함된 답변 추가 완료",
+    CREATE_WORDS_SUCCESS: "단어 포함된 답변 추가 완료",
+    
     CREATE_POST_SUCCESS: "게시글 생성 완료",
     CREATE_POST_FAIL: "게시글 생성 실패",
     READ_POST_FAIL: "게시글 조회 성공",
