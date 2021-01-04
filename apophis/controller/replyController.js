@@ -11,6 +11,7 @@ const {
 } = require('../models');
 module.exports = {
 
+    /* 채팅에 대한 응답  POST : [ /choice/:chatDetailsIdx] */
     getReply: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
         const token = req.headers.jwt;

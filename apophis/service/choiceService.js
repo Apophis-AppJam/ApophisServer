@@ -4,7 +4,7 @@ module.exports = {
     
     getChoice: async (chatActionId) => {
         try {
-            const aponymousChat = await ChatDetails.findAll({
+            const aponymousChat = await ChatDetails.findOne({
                 where : {
                     ChatDetailsIdx : chatActionId
                 },

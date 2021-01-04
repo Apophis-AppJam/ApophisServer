@@ -16,7 +16,7 @@ module.exports = {
                 where : {
                     chatDetailsIdx: chatDetailsIdx,
                 },
-                attributes: ['ChatIdx', 'text'],
+                attributes: ['text'],
             });
             const aponymousChat = ({
                 chat,
