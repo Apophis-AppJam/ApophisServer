@@ -12,7 +12,7 @@ module.exports = {
         const day = req.params.day;
         const chatDetailsIdx = req.params.chatDetailsIdx;
         try {
-            const comments = await chatService.getChatById(day, chatDetailsIdx);
+            const comments = await chatService.getChatById(chatDetailsIdx);
             if (!comments) {
                 console.log('comments 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
