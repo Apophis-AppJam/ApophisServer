@@ -7,26 +7,36 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true,
         },
+        snsId: {
+            type: DataTypes.STRING(30),
+            unique: false,
+            allowNull: true,
+        },
+        provider: {
+            type: DataTypes.STRING(20),
+            unique: false,
+            allowNull: true,
+        },
         userName: {
             type: DataTypes.STRING(10),
             unique: false,
-            allowNull: false,
+            allowNull: true,
         },
         accessToken: {
             type: DataTypes.STRING(100),
             unique: true,
-            allowNull: false,
+            allowNull: true,
         },
         refreshToken: {
             type: DataTypes.STRING(100),
             unique: true,
-            allowNull: false,
+            allowNull: true,
         }
 
     }, {
         //모델의 옵션들을 지정하는곳   
         tableName: 'USER_TB',
-        timestamps: false,
+        timestamps: true,
 
     });
 };
