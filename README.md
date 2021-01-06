@@ -77,13 +77,12 @@ db.Reply.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatD
 - 사용자 자신에 대한 회고 기록
 - 자신의 죽음을 가정하에 작성하는 버킷 리스트
 
-
 <br />
 
 ##  Apophis Server
 
-| 류세화                      | 이수진                      |
-| --------------------------- | --------------------------- |
-| <img width="1500" alt="KakaoTalk_Photo_2021-01-05-21-38-54" src="https://user-images.githubusercontent.com/61377122/103647333-7cabe800-4f9e-11eb-975c-45155e687b4f.png">| ![image](https://user-images.githubusercontent.com/61377122/103647854-47ec6080-4f9f-11eb-8615-0bb289f5fd07.png)|
-| - rdb 설계<br /> - 배포환경 구축<br /> - 대화창 선택지 상세 조회<br /> - 아포니머스와 사용자의 일차별 채팅 전체 조회 | - rdb 설계<br /> - 배포환경 구축<br />	- 아포니머스 채팅 조회 <br /> - 사용자 대답 입력|
+| 류세화                                                       | 이수진                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img width="1500" alt="Screen Shot 2021-01-06 at 1 33 07 PM" src="https://user-images.githubusercontent.com/46921003/103729422-bffc6a00-5023-11eb-84d2-9733d9791b66.png"> | ![image](https://user-images.githubusercontent.com/61377122/103647854-47ec6080-4f9f-11eb-8615-0bb289f5fd07.png) |
+| - rdb 설계<br /> - 배포환경 구축<br /> - 대화창 선택지 상세 조회<br /> - 아포니머스와 사용자의 일차별 채팅 전체 조회 | - rdb 설계<br /> - 배포환경 구축<br />	- 아포니머스 채팅 조회 <br /> - 사용자 대답 입력 |
 
