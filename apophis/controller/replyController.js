@@ -2,16 +2,17 @@ const sequelize = require('sequelize');
 const ut = require('../modules/util');
 const rm = require('../modules/responseMessage');
 const sc = require('../modules/statusCode');
-//뒤 형식으로 모델 추가하기 const {User,Post,Class,} = require('../models');
 const {
     User,
     ChatDetails,
     Reply,
     ReplyWords
 } = require('../models');
+const replyService = require('../service/replyService');
+
 module.exports = {
 
-    /* 채팅에 대한 응답  POST : [ /choice/:chatDetailsIdx] */
+    /* 채팅에 대한 응답  POST : [ /reply/:chatDetailsIdx/1] */
     getReply: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
         const token = req.headers.jwt;
@@ -118,4 +119,47 @@ module.exports = {
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
         }
     },
+
+    /* 사용자 대답 입력 (스트링값 세개) POST : [/reply/:chatDetailsIdx/4] */
+    getReplies: async (req, res) => {
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const token = req.headers.jwt;
+        const {
+            replyString,
+            reply1,
+            reply2,
+            reply3
+        } = req.body;
+
+        console.log(chatDetailsIdx);
+        try {
+            const comments = await replyService.getThreeReplies(chatDetailsIdx,replyString, reply1, reply2, reply3, token);
+            if (!comments) {
+                console.log('REPLY 테이블이 비어있습니다');
+                return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+            }
+            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (대답세개) 성공", comments));
+        } catch (error) {
+            console.error(error);
+            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+        }
+    },
+     /* 사용자 대답 입력 (음성녹음) POST : [/reply/:chatDetailsIdx/100] */
+     getAudio: async (req, res) => {
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const token = req.headers.jwt;
+        const replyAudio = req.file.location
+
+        try {
+            const audio = await replyService.getAudio(chatDetailsIdx,replyAudio, token);
+            if (!audio) {
+                console.log('REPLY 테이블이 비어있습니다');
+                return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+            }
+            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (음성녹음) 성공", audio));
+        } catch (error) {
+            console.error(error);
+            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+        }
+    }
 }

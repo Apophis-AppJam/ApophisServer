@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
             unique: false,
             allowNull: true,
         },
+        nextAction: {
+            type: DataTypes.STRING(40),
+            unique: false,
+            allowNull: true,
+        }
         
     }, {
         //모델의 옵션들을 지정하는곳    

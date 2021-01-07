@@ -3,7 +3,6 @@ const { Reply, ReplyWords, Chat, ChatDetails,User } = require('../models');
 module.exports = {
     
     getChatById: async ( chatDetailsIdx,token) => {
-        
         try {
             
             const postInfo = await ChatDetails.findOne({
@@ -55,7 +54,9 @@ module.exports = {
                 },
                 attributes: ['ChatDetailsIdx', 'replyString', 'replyImage'],
                 
+                
             });
+            console.log(userReply.replyImage)
             const chatReply = ({
                 aponymousChat,
                 userReply
