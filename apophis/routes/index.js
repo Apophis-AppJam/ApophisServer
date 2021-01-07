@@ -10,4 +10,5 @@ router.use('/user', require('./user'))
 router.use('/choice', require('./choice'))
 router.use('/reply', require('./reply'))
 router.use('/chat', require('./chat'))
+//router.use('/auth', require('./auth'))
 module.exports = router;
