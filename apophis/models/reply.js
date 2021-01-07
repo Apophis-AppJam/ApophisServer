@@ -10,11 +10,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(200),
             unique: false,
             allowNull: true,
+            defaultValue: ''
         },
-        replyImage: {
+        replyFile: {
             type: DataTypes.STRING(200),
             unique: false,
             allowNull: true,
+            defaultValue: ''
         },
         
     }, {

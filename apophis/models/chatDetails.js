@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         replyNum: {
             type: DataTypes.INTEGER,
             allowNull: true,
+        },
+        replyType: {
+            type: DataTypes.STRING(40),
+            allowNull: true,
         }
         
     }, {
