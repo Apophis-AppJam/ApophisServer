@@ -2,24 +2,25 @@ const { Reply, ReplyWords, User } = require('../models');
 
 module.exports = {
     
-    // getAudio: async (chatActionId) => {
-    //     try {
-    //         const aponymousChat = await ChatDetails.findOne({
-    //             where : {
-    //                 ChatDetailsIdx : chatActionId
-    //             },
-    //             attributes: ['info', 'day', 'replyNum'],
-    
-    //             include: [{
-    //                 model: ChoiceWords,
-    //                 attributes: ['choiceWords']
-    //             }]
-    //         });
-    //         return aponymousChat;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // },
+    getAudio: async (chatDetailsIdx, replyAudio, token) => {
+        try {
+            const user = await User.findOne({
+                where: {
+                    accessToken: token,
+                }
+            });
+            const reply = await Reply.create({
+                replyImage: replyAudio,
+                ChatDetailsIdx : chatDetailsIdx,
+            })
+
+            await user.addReply(reply);
+
+            return reply;
+        } catch (error) {
+            throw error;
+        }
+    },
 
     getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, token) => {
         try {
@@ -54,7 +55,14 @@ module.exports = {
             await user.addReply(firstReply);
             await user.addReply(secondReply);
             await user.addReply(thirdReply);
-            return reply;
+            const response = [
+                reply.replyString,
+                firstReply.replyString,
+                secondReply.replyString,
+                thirdReply.replyString
+            ]
+
+            return response;
         } catch (error) {
             throw error;
         }

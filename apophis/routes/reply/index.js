@@ -11,8 +11,8 @@ router.post('/:chatDetailsIdx/0', upload.single('image'),replyController.getImag
 router.post('/:chatDetailsIdx/3', replyController.getWords);
 /* 사용자 대답 입력 (스트링값 세개)*/
 router.post('/:chatDetailsIdx/4', replyController.getReplies);
-
 /* 사용자 대답 입력 (음성녹음)*/
+router.post('/:chatDetailsIdx/100', upload.single('audio'), replyController.getAudio);
 
 
 module.exports = router;
