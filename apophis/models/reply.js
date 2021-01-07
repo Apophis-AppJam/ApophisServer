@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             defaultValue: ''
         },
-        replyImage: {
+        replyFile: {
             type: DataTypes.STRING(200),
             unique: false,
             allowNull: true,

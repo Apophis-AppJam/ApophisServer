@@ -22,11 +22,6 @@ module.exports = (sequelize, DataTypes) => {
             unique: false,
             allowNull: true,
         },
-        accessToken: {
-            type: DataTypes.STRING(100),
-            unique: true,
-            allowNull: true,
-        },
         refreshToken: {
             type: DataTypes.STRING(100),
             unique: true,
