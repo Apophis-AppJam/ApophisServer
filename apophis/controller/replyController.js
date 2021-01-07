@@ -31,7 +31,7 @@ module.exports = {
 
             const reply = await Reply.create({
                 replyString,
-                chatDetailsIdx,
+                ChatDetailsIdx : chatDetailsIdx,
                 //replyImage,
             });
 
@@ -61,7 +61,7 @@ module.exports = {
             const reply = await Reply.create({
                 replyString,
                 replyImage,
-                chatDetailsIdx,
+                ChatDetailsIdx : chatDetailsIdx,
             });
 
             await user.addReply(reply);
@@ -91,7 +91,7 @@ module.exports = {
 
             const reply = await Reply.create({
                 replyString,
-                chatDetailsIdx,
+                ChatDetailsIdx : chatDetailsIdx,
             })
 
             const words1 = await ReplyWords.create({

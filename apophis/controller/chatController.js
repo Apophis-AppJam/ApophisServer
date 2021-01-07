@@ -10,9 +10,10 @@ module.exports = {
     /* 아포니머스 채팅 조회  GET : [ /chat/:chatDetailsIdx] */
     readChat: async (req, res) => {
         const day = req.params.day;
+        const token = req.headers.jwt;
         const chatDetailsIdx = req.params.chatDetailsIdx;
         try {
-            const comments = await chatService.getChatById(chatDetailsIdx);
+            const comments = await chatService.getChatById(chatDetailsIdx,token);
             if (!comments) {
                 console.log('comments 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
@@ -27,8 +28,10 @@ module.exports = {
     /* 아포니머스와 사용자의 일차별 전체 채팅 조회 GET : [/chat/day/:day] */
     readChatAll: async (req, res) => {
         const day = req.params.day;
+        const token = req.headers.jwt;
         try {
-            const comments = await chatService.getAllChat(day);
+            const comments = await chatService.getAllChat(day,token);
+            console.log(token)
             if (!comments) {
                 console.log('CHAT 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
