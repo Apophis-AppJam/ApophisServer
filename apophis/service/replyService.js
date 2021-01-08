@@ -6,17 +6,16 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    userName: token,
                 }
             });
             const reply = await Reply.create({
-                replyImage: replyAudio,
+                replyFile: replyAudio,
                 ChatDetailsIdx : chatDetailsIdx,
             })
 
             await user.addReply(reply);
-
-            return reply;
+            return reply.replyFile;
         } catch (error) {
             throw error;
         }
@@ -26,7 +25,7 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    userName: token,
                 }
             });
 
@@ -62,7 +61,7 @@ module.exports = {
                 thirdReply.replyString
             ]
 
-            return response;
+            return reply;
         } catch (error) {
             throw error;
         }

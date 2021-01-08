@@ -131,7 +131,6 @@ module.exports = {
             reply3
         } = req.body;
 
-        console.log(chatDetailsIdx);
         try {
             const comments = await replyService.getThreeReplies(chatDetailsIdx,replyString, reply1, reply2, reply3, token);
             if (!comments) {

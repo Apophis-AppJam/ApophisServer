@@ -32,7 +32,7 @@ module.exports = {
         try {
             const user = await User.findOne({
             where: {
-                accessToken: token,
+                userName: token,
             },
             attributes: ['UserIdx']
         });
@@ -52,11 +52,10 @@ module.exports = {
                 where: {
                     UserIdx: user.UserIdx,
                 },
-                attributes: ['ChatDetailsIdx', 'replyString', 'replyImage'],
+                attributes: ['ChatDetailsIdx', 'replyString', 'replyFile'],
                 
                 
             });
-            console.log(userReply.replyImage)
             const chatReply = ({
                 aponymousChat,
                 userReply
