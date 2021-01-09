@@ -122,6 +122,27 @@ module.exports = {
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
         }
     },
+    /* 사용자 대답 입력 (스트링값 두개) POST : [/reply/:chatDetailsIdx/2] */
+    getTwoReplies: async (req, res) => {
+        const chatDetailsIdx = req.params.chatDetailsIdx;
+        const {
+            reply1,
+            reply2
+        } = req.body;
+        const {UserIdx} = req.decoded
+
+        try {
+            const comments = await replyService.getTwoReplies(chatDetailsIdx, reply1, reply2, UserIdx);
+            if (!comments) {
+                console.log('REPLY 테이블이 비어있습니다');
+                return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+            }
+            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (대답두개) 성공"));
+        } catch (error) {
+            console.error(error);
+            return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
+        }
+    },
 
     /* 사용자 대답 입력 (스트링값 세개) POST : [/reply/:chatDetailsIdx/4] */
     getReplies: async (req, res) => {
