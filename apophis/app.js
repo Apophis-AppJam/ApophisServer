@@ -52,7 +52,6 @@ app.use(session({
   name: 'session-cookie',
 }))
 
-
 app.use('/', indexRouter);
 app.use('/auth',authRouter)
 // catch 404 and forward to error handler
