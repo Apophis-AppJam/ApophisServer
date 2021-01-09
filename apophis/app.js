@@ -7,8 +7,8 @@ var session = require('express-session')
 var dotenv = require('dotenv');
 var logger = require('morgan');
 var authRouter = require('./routes/auth');
-const passport = require('passport');
-const passportConfig = require('./passport');
+// const passport = require('passport');
+// const passportConfig = require('./passport');
 
 var indexRouter = require('./routes/index');
 
@@ -18,7 +18,7 @@ var app = express();
 const {
   sequelize
 } = require('./models');
-passportConfig(passport);
+//passportConfig(passport);
 /** alter: true를 해줘야 데이터베이스에 수정이 반영됨 */
 sequelize.sync({
     alter: false
@@ -53,8 +53,8 @@ app.use(session({
   name: 'session-cookie',
 }))
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 app.use('/', indexRouter);
