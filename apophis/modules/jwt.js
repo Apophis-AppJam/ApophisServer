@@ -10,8 +10,8 @@ const TOKEN_INVALID = -2;
 module.exports = {
     sign: async (user) => {
         const payload = {
-            id: user.id,
-            name: user.userName
+            UserIdx : user.UserIdx,
+            
         };
         const result = {
             accessToken: jwt.sign(payload, secretKey, options),
