@@ -14,8 +14,8 @@ module.exports = {
 
     /* 채팅에 대한 응답  POST : [ /reply/:chatDetailsIdx/1] */
     getReply: async (req, res) => {
+        const {UserIdx} = req.decoded
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const token = req.headers.jwt;
         const {
             replyString,
 
@@ -26,7 +26,7 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    UserIdx
                 }
             });
 
@@ -45,7 +45,6 @@ module.exports = {
     },
     getImage: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const token = req.headers.jwt;
         const replyImage = req.file.location
 
         const {
@@ -123,7 +122,6 @@ module.exports = {
     /* 사용자 대답 입력 (스트링값 세개) POST : [/reply/:chatDetailsIdx/4] */
     getReplies: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const token = req.headers.jwt;
         const {
             replyString,
             reply1,
