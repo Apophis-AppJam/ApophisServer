@@ -12,7 +12,7 @@ const replyService = require('../service/replyService');
 
 module.exports = {
 
-    /* 채팅에 대한 응답  POST : [ /reply/:chatDetailsIdx/1] */
+    /* 사용자 대답 입력 (스트링값 한개) POST : [/reply/:chatDetailsIdx/1] */
     getReply: async (req, res) => {
         const {UserIdx} = req.decoded
         const chatDetailsIdx = req.params.chatDetailsIdx;
@@ -43,9 +43,12 @@ module.exports = {
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.CREATE_POST_FAIL));
         }
     },
+
+    /* 사용자 대답 입력 (이미지 + 스트링 한개) POST : [/reply/:chatDetailsIdx/0] */
     getImage: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
         const replyImage = req.file.location
+        const {UserIdx} = req.decoded
 
         const {
             replyString,
@@ -54,7 +57,7 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    UserIdx,
                 }
             });
 
@@ -72,9 +75,10 @@ module.exports = {
         }
     },
     
+    /* 사용자 대답 입력 (스트링 한개 + 단어 세개) POST : [/reply/:chatDetailsIdx/3] */
     getWords: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const token = req.headers.jwt;
+        const {UserIdx} = req.decoded
         const {
             replyString,
             word1,
@@ -85,7 +89,7 @@ module.exports = {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    UserIdx,
                 }
             });
 
@@ -128,15 +132,15 @@ module.exports = {
             reply2,
             reply3
         } = req.body;
+        const {UserIdx} = req.decoded
 
-        console.log(chatDetailsIdx);
         try {
-            const comments = await replyService.getThreeReplies(chatDetailsIdx,replyString, reply1, reply2, reply3, token);
+            const comments = await replyService.getThreeReplies(chatDetailsIdx,replyString, reply1, reply2, reply3, UserIdx);
             if (!comments) {
                 console.log('REPLY 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
             }
-            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (대답세개) 성공", comments));
+            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (대답세개) 성공"));
         } catch (error) {
             console.error(error);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
@@ -145,16 +149,16 @@ module.exports = {
      /* 사용자 대답 입력 (음성녹음) POST : [/reply/:chatDetailsIdx/100] */
      getAudio: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const token = req.headers.jwt;
         const replyAudio = req.file.location
+        const {UserIdx} = req.decoded
 
         try {
-            const audio = await replyService.getAudio(chatDetailsIdx,replyAudio, token);
+            const audio = await replyService.getAudio(chatDetailsIdx,replyAudio, UserIdx);
             if (!audio) {
                 console.log('REPLY 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
             }
-            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (음성녹음) 성공", audio));
+            return res.status(sc.OK).send(ut.success(sc.OK, "사용자 대답 입력 (음성녹음) 성공"));
         } catch (error) {
             console.error(error);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));

@@ -28,10 +28,9 @@ module.exports = {
     /* 아포니머스와 사용자의 일차별 전체 채팅 조회 GET : [/chat/day/:day] */
     readChatAll: async (req, res) => {
         const day = req.params.day;
-        const token = req.headers.jwt;
+        const {UserIdx} = req.decoded
         try {
-            const comments = await chatService.getAllChat(day,token);
-            console.log(token)
+            const comments = await chatService.getAllChat(day, UserIdx);
             if (!comments) {
                 console.log('CHAT 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
