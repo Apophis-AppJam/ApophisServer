@@ -2,31 +2,30 @@ const { Reply, ReplyWords, User } = require('../models');
 
 module.exports = {
     
-    getAudio: async (chatDetailsIdx, replyAudio, token) => {
+    getAudio: async (chatDetailsIdx, replyAudio, UserIdx) => {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    UserIdx,
                 }
             });
             const reply = await Reply.create({
-                replyImage: replyAudio,
+                replyFile: replyAudio,
                 ChatDetailsIdx : chatDetailsIdx,
             })
 
             await user.addReply(reply);
-
-            return reply;
+            return reply.replyFile;
         } catch (error) {
             throw error;
         }
     },
 
-    getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, token) => {
+    getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, UserIdx) => {
         try {
             const user = await User.findOne({
                 where: {
-                    accessToken: token,
+                    UserIdx
                 }
             });
 
@@ -62,7 +61,7 @@ module.exports = {
                 thirdReply.replyString
             ]
 
-            return response;
+            return reply;
         } catch (error) {
             throw error;
         }
