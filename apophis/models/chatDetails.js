@@ -10,15 +10,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
             allowNull: true,
         },
-        chatAction: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            unique: true,
-        },
-        chatView: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
         day: {
             type: DataTypes.INTEGER,
             allowNull: true,
