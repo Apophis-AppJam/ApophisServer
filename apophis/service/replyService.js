@@ -2,11 +2,11 @@ const { Reply, ReplyWords, User } = require('../models');
 
 module.exports = {
     
-    getAudio: async (chatDetailsIdx, replyAudio, token) => {
+    getAudio: async (chatDetailsIdx, replyAudio, UserIdx) => {
         try {
             const user = await User.findOne({
                 where: {
-                    userName: token,
+                    UserIdx,
                 }
             });
             const reply = await Reply.create({
@@ -21,11 +21,11 @@ module.exports = {
         }
     },
 
-    getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, token) => {
+    getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, UserIdx) => {
         try {
             const user = await User.findOne({
                 where: {
-                    userName: token,
+                    UserIdx
                 }
             });
 
