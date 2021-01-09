@@ -2,7 +2,7 @@ const { Reply, ReplyWords, Chat, ChatDetails,User } = require('../models');
 
 module.exports = {
     
-    getChatById: async ( chatDetailsIdx,token) => {
+    getChatById: async ( chatDetailsIdx) => {
         try {
             
             const postInfo = await ChatDetails.findOne({
@@ -10,13 +10,13 @@ module.exports = {
                     
                     chatDetailsIdx: chatDetailsIdx,
                 },
-                attributes: ['info']
+                attributes: ['info','replyType']
             })
             const chat = await Chat.findAll({
                 where : {
                     chatDetailsIdx: chatDetailsIdx,
                 },
-                attributes: ['text'],
+                attributes: ['text','nextAction'],
             });
             const aponymousChat = ({
                 chat,
