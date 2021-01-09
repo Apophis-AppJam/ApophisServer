@@ -2,8 +2,7 @@ const { Reply, ReplyWords, Chat, ChatDetails,User } = require('../models');
 
 module.exports = {
     
-    getChatById: async ( chatDetailsIdx) => {
-        const {UserIdx} = req.decoded
+    getChatById: async (chatDetailsIdx) => {
         try {
             const postInfo = await ChatDetails.findOne({
                 where:{
