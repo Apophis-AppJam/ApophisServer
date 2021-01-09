@@ -21,6 +21,34 @@ module.exports = {
         }
     },
 
+    getTwoReplies: async (chatDetailsIdx, reply1, reply2, UserIdx) => {
+        try {
+            const user = await User.findOne({
+                where: {
+                    UserIdx
+                }
+            });
+
+
+            const firstReply = await Reply.create({
+                replyString: reply1,
+                ChatDetailsIdx : chatDetailsIdx,
+
+            })
+            const secondReply = await Reply.create({
+                replyString: reply2,
+                ChatDetailsIdx : chatDetailsIdx,
+
+            })
+
+            await user.addReply(firstReply);
+            await user.addReply(secondReply);
+            return firstReply;
+        } catch (error) {
+            throw error;
+        }
+    },
+
     getThreeReplies: async (chatDetailsIdx, replyString, reply1, reply2, reply3, UserIdx) => {
         try {
             const user = await User.findOne({
