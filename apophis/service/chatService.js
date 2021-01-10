@@ -9,7 +9,7 @@ module.exports = {
                     
                     chatDetailsIdx: chatDetailsIdx,
                 },
-                attributes: ['info','replyType']
+                attributes: ['replyNum','replyType']
             })
             const chat = await Chat.findAll({
                 where : {
