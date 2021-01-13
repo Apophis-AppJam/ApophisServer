@@ -47,7 +47,7 @@ module.exports = {
     /* 사용자 대답 입력 (이미지 + 스트링 한개) POST : [/reply/:chatDetailsIdx/0] */
     getImage: async (req, res) => {
         const chatDetailsIdx = req.params.chatDetailsIdx;
-        const replyImage = req.file.location
+        const replyFile = req.file.location
         const {UserIdx} = req.decoded
 
         const {
@@ -63,7 +63,7 @@ module.exports = {
 
             const reply = await Reply.create({
                 replyString,
-                replyImage,
+                replyFile,
                 ChatDetailsIdx : chatDetailsIdx,
             });
 
