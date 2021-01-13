@@ -19,7 +19,9 @@ db.ChoiceWords = require('./choiceWords')(sequelize, Sequelize);
 db.Reply = require('./reply')(sequelize, Sequelize);
 db.ReplyWords = require('./replyWords.js')(sequelize, Sequelize);
 db.ChatDetails = require('./chatDetails.js')(sequelize, Sequelize);
-
+db.Letter = require('./letter.js')(sequelize, Sequelize);
+db.LetterReceive = require('./letterReceive.js')(sequelize, Sequelize);
+db.BucketList = require('./bucketList.js')(sequelize, Sequelize);
 
 /* 1: N User:Reply */
 db.User.hasMany(db.Reply,{onDelete:'cascade',foreignKey: 'UserIdx',sourceKey:'UserIdx'}) 
@@ -41,5 +43,20 @@ db.ReplyWords.belongsTo(db.Reply,{foreignKey: 'ReplyIdx',targetKey:'ReplyIdx'})
 db.ChatDetails.hasMany(db.Reply,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',sourceKey:'ChatDetailsIdx'})
 db.Reply.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatDetailsIdx'})
 
+/* 1: 1 User:Letter */
+db.User.hasOne(db.Letter,{onDelete:'cascade',foreignKey: 'UserIdx',sourceKey:'UserIdx'})
+db.Letter.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
+
+/* 1: N Letter:LetterReceive */
+db.Letter.hasMany(db.LetterReceive,{onDelete:'cascade',foreignKey: 'LetterIdx',sourceKey:'LetterIdx'})
+db.LetterReceive.belongsTo(db.Letter,{foreignKey: 'LetterIdx',targetKey:'LetterIdx'})
+
+/* 1: 1 User:LetterReceive */
+db.User.hasOne(db.LetterReceive,{onDelete:'cascade',foreignKey: 'UserIdx',sourceKey:'UserIdx'})
+db.LetterReceive.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
+
+/* 1: N User:BucketList */
+db.User.hasMany(db.BucketList,{onDelete:'cascade',foreignKey: 'UserIdx',sourceKey:'UserIdx'})
+db.BucketList.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
 
 module.exports = db;

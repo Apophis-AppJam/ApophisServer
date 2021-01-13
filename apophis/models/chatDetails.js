@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         info: {
             type: DataTypes.STRING(100),
             allowNull: true,
+            defaultValue: ''
         },
         day: {
             type: DataTypes.INTEGER,
@@ -21,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         replyType: {
             type: DataTypes.STRING(40),
             allowNull: true,
+            defaultValue: ''
         }
         
     }, {
