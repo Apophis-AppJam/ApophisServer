@@ -6,13 +6,13 @@ module.exports = {
     getLetter: async () => {
         try {
             const letter = await Letter.findAll({
+                // 랜덤으로 리턴해주는 로직 추가하기
                 order: [
                     [sequelize.literal('RAND()')]
                   ],
-            
                   limit: 1,
                 attributes: ['text']
-                // 랜덤으로 리턴해주는 로직 추가하기
+                
             })
             return letter;
         } catch (error) {
