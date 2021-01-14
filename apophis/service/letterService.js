@@ -32,7 +32,7 @@ module.exports = {
                 text: text
             })
 
-            await user.createLetter(letter)
+            await user.setLetter(letter)
             return letter;
         } catch (error) {
             throw error;

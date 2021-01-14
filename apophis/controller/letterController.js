@@ -31,7 +31,7 @@ module.exports = {
                 console.log('comments 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
             }
-            return res.status(sc.OK).send(ut.success(sc.OK, "익명의 누군가에게 편지 보내기 성공", letters));
+            return res.status(sc.OK).send(ut.success(sc.OK, "익명의 누군가에게 편지 보내기 성공"));
         } catch (error) {
             console.error(error);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
