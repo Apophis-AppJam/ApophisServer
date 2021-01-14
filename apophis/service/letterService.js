@@ -39,19 +39,17 @@ module.exports = {
                 where : {
                     UserIdx : UserIdx
                 },
-                attributes: ['LetterIdx'],
-    
-                include: [{
-                    model: Letter,
-                    attributes: ['text']
-                }]
+                attributes: ['LetterIdx']
             });
+            const letterIdx = letterView.LetterIdx 
 
-            // const newConst = LetterReceive.map((item, index) => {
-            //     item.dataValues.LetterIdx = letterView.dataValues.LetterIdx
-            //     item.dataValues.test = letterView.Letter.text
-            // }) 
-            return letterView;
+            const letterView2 = await Letter.findOne({
+                where : {
+                    LetterIdx : letterIdx
+                },
+                attributes: ['LetterIdx', 'text'],
+            });
+            return letterView2;
         } catch (error) {
             throw error;
         }
