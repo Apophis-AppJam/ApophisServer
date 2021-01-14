@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authUtils = require('../../middlewares/authUtils')
 
-const letterController = require('../../controller/letterController');
+const bucketController = require('../../controller/bucketController');
 
 //현재 가진 전체 버킷리스트 불러오기
 router.get('/', authUtils.checkToken, bucketController.getAllBucket);
@@ -11,6 +11,6 @@ router.get('/', authUtils.checkToken, bucketController.getAllBucket);
 router.post('/', authUtils.checkToken, bucketController.postBucket);
 
 //
-router.put('/', authUtils.checkToken, );
+//router.put('/', authUtils.checkToken, );
 
 module.exports = router;
