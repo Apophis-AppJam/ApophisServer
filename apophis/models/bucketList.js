@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
             unique: false,
             allowNull: true,
             defaultValue: ''
+        },
+        dDay: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: true,
+            defaultValue: 0
         }
         
     }, {

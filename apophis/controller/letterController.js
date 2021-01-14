@@ -23,8 +23,10 @@ module.exports = {
 
     /* 편지 보내기  POST : [ /letter] */
     postLetter: async (req, res) => {
+        const {UserIdx} = req.decoded
+        const { text } = req.body;
         try {
-            const letters = await letterService.postLetter();
+            const letters = await letterService.postLetter(UserIdx, text);
             if (!letters) {
                 console.log('comments 테이블이 비어있습니다');
                 return res.status(sc.INTERNAL_SERVER_ERROR).send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
