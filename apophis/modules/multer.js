@@ -12,7 +12,7 @@ const upload = multer({
         acl: 'public-read',
         key: function (req, file, cb) {
             var ext = path.extname(file.originalname);
-            if(ext == '.png' && ext == '.jpg' && ext == '.gif' && ext == '.jpeg') {
+            if(ext == '.png' || ext == '.jpg' || ext == '.gif' || ext == '.jpeg') {
                 cb(null, 'image/origin/' + Date.now() + '.' + file.originalname.split('.').pop());
                 console.log("이미지로 인식")
             } else {

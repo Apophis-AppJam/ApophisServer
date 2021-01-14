@@ -1,4 +1,4 @@
-const { Reply, ReplyWords, User, Letter } = require('../models');
+const { Reply, User, Letter } = require('../models');
 const sequelize = require('sequelize');
 
 module.exports = {
@@ -20,9 +20,22 @@ module.exports = {
         }
     },
 
-   
+    postLetter: async (UserIdx, text) => {
+        try {
+            const user = await User.findOne({
+                where: {
+                    UserIdx,
+                }
+            });
+            
+            const letter = await Letter.create({
+                text: text
+            })
 
-
-    
-
+            await user.createLetter(letter)
+            return letter;
+        } catch (error) {
+            throw error;
+        }
+    },
 }

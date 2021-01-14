@@ -6,6 +6,7 @@ const letterController = require('../../controller/letterController');
 
 
 router.get('/', authUtils.checkToken, letterController.getLetter);
+router.post('/', authUtils.checkToken, letterController.postLetter);
 
 
 module.exports = router;
