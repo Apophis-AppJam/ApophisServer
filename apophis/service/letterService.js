@@ -1,4 +1,4 @@
-const { Reply, ReplyWords, User, Letter } = require('../models');
+const { Reply, User, Letter } = require('../models');
 const sequelize = require('sequelize');
 
 module.exports = {
@@ -6,13 +6,13 @@ module.exports = {
     getLetter: async () => {
         try {
             const letter = await Letter.findAll({
+                // 랜덤으로 리턴해주는 로직 추가하기
                 order: [
                     [sequelize.literal('RAND()')]
                   ],
-            
                   limit: 1,
                 attributes: ['text']
-                // 랜덤으로 리턴해주는 로직 추가하기
+                
             })
             return letter;
         } catch (error) {
@@ -20,9 +20,22 @@ module.exports = {
         }
     },
 
-   
+    postLetter: async (UserIdx, text) => {
+        try {
+            const user = await User.findOne({
+                where: {
+                    UserIdx,
+                }
+            });
+            
+            const letter = await Letter.create({
+                text: text
+            })
 
-
-    
-
+            await user.createLetter(letter)
+            return letter;
+        } catch (error) {
+            throw error;
+        }
+    },
 }

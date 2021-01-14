@@ -34,7 +34,7 @@ module.exports = {
                 UserIdx
             },
             attributes: ['UserIdx']
-        });
+            });
 
             const aponymousChat = await ChatDetails.findAll({
                 where:{
@@ -44,17 +44,23 @@ module.exports = {
                 include: [{
                     model: Chat,
                     attributes: ['text']
+                },
+            ]
+            })
+            const userReply = await ChatDetails.findAll({
+                where:{
+                    day: day,
+                },
+                attributes: ['ChatDetailsIdx'],
+                include: [
+                {
+                    model: Reply,
+                    where: {
+                        UserIdx: user.UserIdx,
+                    },
+                    attributes: ['replyString', 'replyFile']
                 }]
             })
-
-            const userReply = await Reply.findAll({
-                where: {
-                    UserIdx: user.UserIdx,
-                },
-                attributes: ['ChatDetailsIdx', 'replyString', 'replyFile'],
-                
-                
-            });
             const chatReply = ({
                 aponymousChat,
                 userReply
