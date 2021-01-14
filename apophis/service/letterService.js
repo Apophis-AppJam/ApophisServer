@@ -1,20 +1,55 @@
-const { Reply, User, Letter } = require('../models');
+const { Reply, User, Letter, LetterReceive} = require('../models');
 const sequelize = require('sequelize');
 
 module.exports = {
     
-    getLetter: async () => {
+    getLetter: async (UserIdx) => {
         try {
-            const letter = await Letter.findAll({
+            const user = await User.findOne({
+                where: {
+                    UserIdx,
+                }
+            });
+
+            const letter = await Letter.findOne({
                 // 랜덤으로 리턴해주는 로직 추가하기
                 order: [
                     [sequelize.literal('RAND()')]
                   ],
                   limit: 1,
-                attributes: ['text']
-                
+                attributes: ['LetterIdx', 'text'],
+                 
+            });
+
+            // 받은 편지 디비에 등록해주기
+            const newLetter = await LetterReceive.create({
+                LetterIdx: letter.LetterIdx
             })
+            await user.setLetterReceive(newLetter)
+
             return letter;
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    viewLetter: async (UserIdx) => {
+        try {
+            const letterView = await LetterReceive.findOne({
+                where : {
+                    UserIdx : UserIdx
+                },
+                attributes: ['LetterIdx']
+            });
+            const letterIdx = letterView.LetterIdx 
+
+            const letterView2 = await Letter.findOne({
+                where : {
+                    LetterIdx : letterIdx
+                },
+                attributes: ['LetterIdx', 'text'],
+            });
+            return letterView2;
         } catch (error) {
             throw error;
         }
@@ -30,7 +65,11 @@ module.exports = {
             
             const letter = await Letter.create({
                 text: text
-            })
+            });
+
+            const letterReceive = await LetterReceive.create({
+                LetterIdx: letter.LetterIdx
+            });
 
             await user.setLetter(letter)
             return letter;
