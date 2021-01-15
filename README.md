@@ -1,15 +1,34 @@
-# Apophis
+# ☄️ Apophis Server
+
+<br />
+
+ <img width="170" alt="로고" src="https://user-images.githubusercontent.com/61377122/104701505-8c72bb80-5758-11eb-9de6-8c53bc4b3c4d.png">
+
+ ![npm_bedge](https://img.shields.io/badge/npm-6.14.6-blueviolet)
+![node_bedge](https://img.shields.io/badge/node-12.18.3-ff69b4)
+<br />
+
+<br />
+
+* <b> SOPT 27th Virtual Hackathon :  APPJAM - Team **Apophis** </b>
+    
+* <b> 프로젝트 기간: 2020.12.27 ~ 2020.01.15 </b>
+
+<br />
+
 ### ☄️ 미리 맞이해보는 당신의 이른 죽음
 
 *"죽음이라는 새로운 시각으로 과거의 삶을 바라보고, 회고하며 그를 통해 현재와 미래의 삶을 재구성한다."*
 
-
-
-![KakaoTalk_Photo_2021-01-05-21-48-55](https://user-images.githubusercontent.com/61377122/103648239-e2e53a80-4f9f-11eb-998a-4f5f9034564c.jpeg)
+<br />
 
 > "지구 멸망 발표가 난 어느 말도 안되는 날, 아무 번호나 눌러 전화를 하게 된 아포니머스. 그리고 그걸 받은 당신. 다짜고짜 멸망까지의 7일을 함께 보내달라고 하더니, 심지어 이 7일 동안 짐을 싸서 당신에게로 가는 여행길에 오른다고 하는데."
 
-[아포피스 노션 링크](https://www.notion.so/_Apophis-61bd57af215649dabdc371d26610ade2)
+<br />
+
+![KakaoTalk_Photo_2021-01-05-21-48-55](https://user-images.githubusercontent.com/61377122/103648239-e2e53a80-4f9f-11eb-998a-4f5f9034564c.jpeg)
+
+
 
 <br />
 
@@ -17,13 +36,45 @@
 
 ## 🗂 API 명세서
 
-[API 명세서/진척도 바로가기](https://github.com/Apophis-AppJam/ApophisServer/wiki)
+[API 명세서/진척도 WIKI](https://github.com/Apophis-AppJam/ApophisServer/wiki)
+<br />
+[Apophis Notion](https://www.notion.so/_Apophis-61bd57af215649dabdc371d26610ade2)
 
 <br />
 
 
+## 🗝 Main Function
 
-## Code Convention 
+### 🗣 Interaction
+
+- 아포니머스와의 채팅
+- 익명의 누군가와 주고받는 편지
+
+<br />
+
+### 🎞 Record
+
+- 사용자 자신에 대한 회고 기록
+- 자신의 죽음을 가정하에 작성해보는 버킷 리스트
+
+<br />
+<br />
+
+
+## 🔗 Architecture
+
+![아키텍쳐](https://user-images.githubusercontent.com/61377122/104699071-8af3c400-5755-11eb-94c6-cbb70f5f3ee6.png)
+
+<br />
+<br />
+
+## 📖 Dependencies  Module
+
+![image](https://user-images.githubusercontent.com/61377122/104703533-c93fb200-575a-11eb-9f21-51d982a1d5ba.png)
+
+<br />
+
+## ✏️ Code Convention 
 
 - git branch
 
@@ -33,6 +84,7 @@ main
    |--- dev
    |--- sehwa_dev
    |--- suzie_dev
+   |--- dev_suzie2
 ```
 
 - git commit rules
@@ -46,29 +98,16 @@ main
 [Chore] 잡일
 ```
 
-<br />
-
-## ✔ Main Function
-
-### 🗣 Interaction
-
-- 아포니머스와의 채팅
-- 익명의 누군가와 주고받는 편지
-
-
-### 🎞 Record
-
-- 사용자 자신에 대한 회고 기록
-- 자신의 죽음을 가정하에 작성해보는 버킷 리스트
 
 <br />
+<br />
 
-## 📖 Dependencies  Module
-
-![dependencies](https://user-images.githubusercontent.com/61377122/103629809-216cfc00-4f84-11eb-842d-f8f6f900545b.png)
-
+## 📋 ERD
+![image](https://user-images.githubusercontent.com/61377122/104705210-f68d5f80-575c-11eb-898c-6b682450600d.png)
 
 <br />
+<br />
+
 
 ## ⚙️ Models
 ```javascript
@@ -121,17 +160,7 @@ db.BucketList.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
 
 
 ```
-
 <br />
-
-## 📋 ERD
-<img width="609" alt="Screen Shot 2021-01-14 at 11 19 37 PM" src="https://user-images.githubusercontent.com/46921003/104602929-3bfb4f80-56bf-11eb-9d51-ca4364e1ff9b.png">
-
-<br />
-
-
-
-## Architecture
 
 
 
@@ -139,10 +168,10 @@ db.BucketList.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
 
 <br />
 
-##  Apophis Server
+## 👥  Apophis Server Team
 
 | 류세화                                                       | 이수진                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img width="300" alt="Screen Shot 2021-01-06 at 1 33 07 PM" src="https://user-images.githubusercontent.com/46921003/103729422-bffc6a00-5023-11eb-84d2-9733d9791b66.png"> | <img width="320" alt="Screen Shot 2021-01-14 at 11 25 48 PM" src="https://user-images.githubusercontent.com/46921003/104603526-db204700-56bf-11eb-9969-bc06e5db9aa4.png"> |
+| <img width="200" alt="Screen Shot 2021-01-06 at 1 33 07 PM" src="https://user-images.githubusercontent.com/46921003/103729422-bffc6a00-5023-11eb-84d2-9733d9791b66.png"> | <img width="210" alt="Screen Shot 2021-01-14 at 11 25 48 PM" src="https://user-images.githubusercontent.com/46921003/104603526-db204700-56bf-11eb-9969-bc06e5db9aa4.png"> |
 | - rdb 설계<br /> - 배포환경 구축<br /> - 대화창 선택지 상세 조회<br /> - 아포니머스와 사용자의 일차별 채팅 전체 조회<br />- 익명의 누군가와 주고받는 편지 | - rdb 설계<br /> - 배포환경 구축<br />- 아포니머스 채팅 조회 <br /> - 사용자 대답 입력<br />- 버킷리스트 관리 |
 
