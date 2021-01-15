@@ -12,7 +12,7 @@
 
 * <b> SOPT 27th Virtual Hackathon :  APPJAM - Team **Apophis** </b>
     
-* <b> 프로젝트 기간: 2020.12.27 ~ 2020.01.15 </b>
+* <b> 프로젝트 기간: 2020.12.27 ~ 2021.01.15 </b>
 
 <br />
 
