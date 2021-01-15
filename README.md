@@ -36,7 +36,7 @@
 
 ## 🗂 API 명세서
 
-## [📝 API 명세서/진척도 WIKI](https://github.com/Apophis-AppJam/ApophisServer/wiki)
+### [📝 API 명세서/진척도 WIKI](https://github.com/Apophis-AppJam/ApophisServer/wiki)
 
 ### [- Apophis Notion](https://www.notion.so/_Apophis-61bd57af215649dabdc371d26610ade2)
 
