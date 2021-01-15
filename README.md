@@ -176,5 +176,5 @@ db.BucketList.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'})
 | 류세화                                                       | 이수진                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <img width="200" alt="Screen Shot 2021-01-06 at 1 33 07 PM" src="https://user-images.githubusercontent.com/46921003/103729422-bffc6a00-5023-11eb-84d2-9733d9791b66.png"> | <img width="210" alt="Screen Shot 2021-01-14 at 11 25 48 PM" src="https://user-images.githubusercontent.com/46921003/104603526-db204700-56bf-11eb-9969-bc06e5db9aa4.png"> |
-| - rdb 설계<br /> - 배포환경 구축<br />- 아포니머스 채팅 조회 <br /> - 대화창 선택지 상세 조회<br /> - 일차별 채팅 전체 조회<br />- 익명의 누군가와 주고받는 편지 | - rdb 설계<br /> - 배포환경 구축<br />- 아포니머스 채팅 조회 <br />- 사용자 로그인/회원가입 <br /> - 사용자 대답 입력<br />- 버킷리스트 조회 및 입력 |
+| - rdb 설계<br /> - 배포환경 구축<br />- 대화창 선택지 상세 조회<br /> - 사용자 대답 입력<br />  - 일차별 채팅 전체 조회<br />- 익명의 누군가와 주고받는 편지 | - rdb 설계<br /> - 배포환경 구축<br />- 아포니머스 채팅 조회 <br />- 사용자 로그인/회원가입 <br /> - 사용자 대답 입력<br />- 버킷리스트 조회 및 입력 |
 
