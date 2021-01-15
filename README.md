@@ -36,9 +36,12 @@
 
 ## 🗂 API 명세서
 
-[API 명세서/진척도 WIKI](https://github.com/Apophis-AppJam/ApophisServer/wiki)
-<br />
-[Apophis Notion](https://www.notion.so/_Apophis-61bd57af215649dabdc371d26610ade2)
+## [📝 API 명세서/진척도 WIKI](https://github.com/Apophis-AppJam/ApophisServer/wiki)
+
+### [- Apophis Notion](https://www.notion.so/_Apophis-61bd57af215649dabdc371d26610ade2)
+
+
+### [- Postman Runner 서버 자동 테스트 환경 구축 결과](https://www.notion.so/suzieep/Apophis-d7557b3b450046e18add354001d81006)
 
 <br />
 
