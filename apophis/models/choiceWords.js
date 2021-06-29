@@ -10,6 +10,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
             unique: false,
             allowNull: true,
+        },
+        nextChatDetailIdx: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: true,
+        },
+        day: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: true,
         }
         
     }, {

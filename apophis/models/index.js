@@ -17,6 +17,7 @@ db.User = require('./user')(sequelize, Sequelize);
 db.Chat = require('./chat')(sequelize, Sequelize);
 db.ChoiceWords = require('./choiceWords')(sequelize, Sequelize);
 db.Reply = require('./reply')(sequelize, Sequelize);
+db.ReplyType= require('./replyType')(sequelize, Sequelize);
 db.ReplyWords = require('./replyWords.js')(sequelize, Sequelize);
 db.ChatDetails = require('./chatDetails.js')(sequelize, Sequelize);
 db.Letter = require('./letter.js')(sequelize, Sequelize);
@@ -30,6 +31,10 @@ db.Reply.belongsTo(db.User,{foreignKey: 'UserIdx',targetKey:'UserIdx'});
 /* 1: N ChatDetails:Chat */
 db.ChatDetails.hasMany(db.Chat,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',sourceKey:'ChatDetailsIdx'})
 db.Chat.belongsTo(db.ChatDetails,{foreignKey: 'ChatDetailsIdx',targetKey:'ChatDetailsIdx'})
+
+/* 1: N ReplyType:ChoiceWords */
+db.ReplyType.hasMany(db.ChoiceWords,{onDelete:'cascade',foreignKey: 'ReplyTypeIdx',sourceKey:'ReplyTypeIdx'})
+db.ChoiceWords.belongsTo(db.ReplyType,{foreignKey: 'ReplyTypeIdx',targetKey:'ReplyTypeIdx'})
 
 /* 1: N ChatDetails:ChoiceWords */
 db.ChatDetails.hasMany(db.ChoiceWords,{onDelete:'cascade',foreignKey: 'ChatDetailsIdx',sourceKey:'ChatDetailsIdx'})
