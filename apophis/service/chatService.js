@@ -1,25 +1,36 @@
-const { Reply, ReplyWords, Chat, ChatDetails,User } = require('../models');
+const { Reply, ReplyType, ChoiceWords, Chat, ChatDetails,User } = require('../models');
 
 module.exports = {
     
     getChatById: async (chatDetailsIdx) => {
         try {
-            const postInfo = await ChatDetails.findOne({
-                where:{
-                    
-                    chatDetailsIdx: chatDetailsIdx,
-                },
-                attributes: ['replyNum','replyType']
-            })
             const chat = await Chat.findAll({
                 where : {
                     chatDetailsIdx: chatDetailsIdx,
                 },
                 attributes: ['text','nextAction'],
             });
+            const replyInfo = await ChoiceWords.findAll({
+                where:{
+                    chatDetailsIdx: chatDetailsIdx,
+                },
+                attributes: ['choiceWords','nextChatDetailIdx'],
+            })
+            const replyType = await ChoiceWords.findOne({
+                where:{
+                    chatDetailsIdx: chatDetailsIdx,
+                },
+                attributes: [],
+                include: [{
+                    model: ReplyType,
+                    attributes: ['text']
+                }],
+            })
+
             const aponymousChat = ({
+                replyType: replyType.dataValues.Reply_Type.text,
                 chat,
-                postInfo
+                replyInfo
             });
             return aponymousChat;
         } catch (error) {
