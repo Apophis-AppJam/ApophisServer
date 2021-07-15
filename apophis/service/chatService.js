@@ -23,13 +23,14 @@ module.exports = {
                 attributes: [],
                 include: [{
                     model: ReplyType,
-                    attributes: ['text']
+                    attributes: ['ReplyTypeIdx', 'text']
                 }],
             })
 
             const aponymousChat = ({
-                replyType: replyType.dataValues.Reply_Type.text,
                 chat,
+                replyTypeIdx: replyType.dataValues.Reply_Type.ReplyTypeIdx,
+                replyType: replyType.dataValues.Reply_Type.text,
                 replyInfo
             });
             return aponymousChat;
