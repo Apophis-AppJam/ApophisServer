@@ -51,7 +51,7 @@ module.exports = {
           .status(sc.INTERNAL_SERVER_ERROR)
           .send(ut.fail(sc.INTERNAL_SERVER_ERROR, rm.INTERNAL_SERVER_ERROR));
       }
-      return res.status(sc.OK).send(ut.success(sc.OK, userWithPhoneNumber));
+      return res.status(sc.OK).send(ut.success(sc.OK, "전화번호 저장 성공"));
     } catch (error) {
       console.error(error);
       return res
